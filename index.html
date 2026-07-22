@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SMARTSPINE is a camera-based AI posture asymmetry screening prototype created by Form 4 students for school health awareness." />
+  <meta name="theme-color" content="#ffffff" />
+  <title>SMARTSPINE | AI Posture Screening Innovation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page-glow glow-one" aria-hidden="true"></div>
+  <div class="page-glow glow-two" aria-hidden="true"></div>
+
+  <header class="site-header" id="home">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="SMARTSPINE home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" role="img"><path d="M24 5c-5 5-6 10-2 15s3 10-2 15c-2 2-3 5-1 8"/><circle cx="24" cy="7" r="2.5"/><circle cx="21" cy="17" r="2.5"/><circle cx="25" cy="27" r="2.5"/><circle cx="20" cy="38" r="2.5"/></svg>
+        </span>
+        <span class="brand-copy"><strong>SMARTSPINE</strong><small>Form 4 Innovation Team</small></span>
+      </a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="#about">About</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#demo">Live Demo</a>
+        <a href="#impact">Impact</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-contact" id="nav-email-link" href="#contact">Contact Team <span>↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span></span> Student Health-Tech Innovation</div>
+          <h1>See posture differently. <em>Screen earlier.</em></h1>
+          <p class="lead">SMARTSPINE is a camera-based AI prototype that identifies visible posture asymmetry at the shoulders, hips and torso—helping schools promote earlier awareness and professional follow-up.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#demo">Launch AI Demo <span>→</span></a>
+            <a class="btn btn-secondary" href="#about">Explore the Innovation</a>
+          </div>
+          <div class="hero-proof">
+            <div><strong>01</strong><span>Contactless</span></div>
+            <div><strong>&lt; 1 min</strong><span>Quick screening flow</span></div>
+            <div><strong>AI</strong><span>Pose landmark analysis</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-label="SMARTSPINE AI analysis preview">
+          <div class="visual-orbit orbit-a"></div>
+          <div class="visual-orbit orbit-b"></div>
+          <div class="dashboard-card">
+            <div class="dashboard-head">
+              <div><span class="live-dot"></span><strong>POSTURE SCAN</strong></div>
+              <span class="prototype-chip">PROTOTYPE</span>
+            </div>
+            <div class="scan-stage">
+              <div class="scan-grid"></div>
+              <svg class="body-map" viewBox="0 0 360 480" aria-hidden="true">
+                <defs>
+                  <linearGradient id="bodyGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1fc8ae"/><stop offset="1" stop-color="#4f7cff"/></linearGradient>
+                </defs>
+                <circle cx="180" cy="58" r="34" fill="rgba(79,124,255,.12)" stroke="url(#bodyGradient)" stroke-width="3"/>
+                <path d="M180 92 C164 120 158 150 162 194 C166 238 154 276 139 324 C132 347 137 373 154 398" fill="none" stroke="url(#bodyGradient)" stroke-width="10" stroke-linecap="round"/>
+                <path d="M180 112 L112 150 M180 112 L248 143 M162 196 L118 289 M162 196 L235 281" fill="none" stroke="#a7bce2" stroke-width="13" stroke-linecap="round"/>
+                <path d="M154 398 L124 458 M154 398 L208 455" fill="none" stroke="#a7bce2" stroke-width="15" stroke-linecap="round"/>
+                <line x1="111" y1="150" x2="248" y2="143" stroke="#1fc8ae" stroke-width="3"/>
+                <line x1="119" y1="289" x2="235" y2="281" stroke="#4f7cff" stroke-width="3"/>
+                <circle cx="111" cy="150" r="7" fill="#1fc8ae"/><circle cx="248" cy="143" r="7" fill="#1fc8ae"/>
+                <circle cx="119" cy="289" r="7" fill="#4f7cff"/><circle cx="235" cy="281" r="7" fill="#4f7cff"/>
+              </svg>
+              <div class="scanner-beam"></div>
+              <span class="map-label label-shoulder">SHOULDER LINE</span>
+              <span class="map-label label-hip">HIP LINE</span>
+            </div>
+            <div class="dashboard-metrics">
+              <div><span>Shoulder tilt</span><strong>2.4°</strong><i class="good">LOW</i></div>
+              <div><span>Hip tilt</span><strong>1.8°</strong><i class="good">LOW</i></div>
+              <div><span>Torso shift</span><strong>3.1%</strong><i class="good">LOW</i></div>
+            </div>
+          </div>
+          <div class="floating-card float-one"><span>AI</span><div><strong>Pose landmarks</strong><small>Shoulders • Hips • Torso</small></div></div>
+          <div class="floating-card float-two"><span>✓</span><div><strong>Privacy-first</strong><small>Processed in the browser</small></div></div>
+        </div>
+      </div>
+      <div class="container trust-strip reveal" aria-label="Project strengths">
+        <span>LOW-COST</span><i></i><span>NON-CONTACT</span><i></i><span>SCHOOL-FRIENDLY</span><i></i><span>SCALABLE</span><i></i><span>STUDENT-LED</span>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-kicker">THE CHALLENGE</span>
+          <h2>Posture changes can be subtle. Awareness should not be.</h2>
+          <p>Students may not notice uneven shoulders, an uneven waistline or a sideways body lean. SMARTSPINE turns an ordinary camera into an accessible educational screening tool.</p>
+        </div>
+        <div class="bento-grid">
+          <article class="bento-card bento-feature reveal">
+            <span class="card-index">01</span>
+            <div class="card-symbol">◎</div>
+            <h3>Camera-based screening</h3>
+            <p>Uses a laptop or mobile camera—equipment that schools already have.</p>
+            <div class="mini-visual"><span></span><span></span><span></span><span></span><span></span></div>
+          </article>
+          <article class="bento-card reveal"><span class="card-index">02</span><div class="card-symbol">AI</div><h3>AI landmark detection</h3><p>Locates shoulder and hip points to calculate visible posture asymmetry.</p></article>
+          <article class="bento-card accent-card reveal"><span class="card-index">03</span><div class="card-symbol">↗</div><h3>Early action</h3><p>Encourages a repeat check and professional assessment when signs remain.</p></article>
+          <article class="bento-card wide-card reveal"><span class="card-index">04</span><div class="card-symbol">♥</div><div><h3>Designed for health awareness—not diagnosis</h3><p>The system supports education and early screening. It does not replace medical examination or radiographic assessment.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process" id="how-it-works">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-kicker">HOW IT WORKS</span>
+          <h2>One camera. Four simple steps.</h2>
+        </div>
+        <div class="process-track">
+          <div class="process-line"><span></span></div>
+          <article class="process-step reveal"><div class="step-icon">01</div><h3>Position</h3><p>Stand upright with your back facing the camera in a bright, uncluttered space.</p></article>
+          <article class="process-step reveal"><div class="step-icon">02</div><h3>Capture</h3><p>Take a clear image with both shoulders and hips fully visible.</p></article>
+          <article class="process-step reveal"><div class="step-icon">03</div><h3>Analyse</h3><p>AI detects key body landmarks and calculates shoulder, hip and torso alignment.</p></article>
+          <article class="process-step reveal"><div class="step-icon">04</div><h3>Respond</h3><p>Review the screening result and seek professional assessment when needed.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section demo-section" id="demo">
+      <div class="container demo-grid">
+        <div class="demo-copy reveal">
+          <span class="section-kicker">LIVE AI PROTOTYPE</span>
+          <h2>Turn on the camera and test the screening flow.</h2>
+          <p>The model identifies shoulder and hip landmarks, calculates posture angles, and displays a screening-level interpretation directly in your browser.</p>
+          <div class="demo-note"><span>!</span><div><strong>Important medical notice</strong><p>SMARTSPINE does not diagnose scoliosis. Any persistent concern should be assessed by a qualified healthcare professional.</p></div></div>
+          <div class="demo-tips">
+            <div><strong>01</strong><span>Use bright, even lighting.</span></div>
+            <div><strong>02</strong><span>Keep the camera level.</span></div>
+            <div><strong>03</strong><span>Show both shoulders and hips.</span></div>
+          </div>
+        </div>
+
+        <div class="demo-panel reveal">
+          <div class="demo-panel-head">
+            <div><span class="live-dot"></span><div><strong>SMARTSPINE AI SCANNER</strong><small>Local browser analysis</small></div></div>
+            <span id="camera-timer">00:00</span>
+          </div>
+          <div class="camera-shell">
+            <video id="camera" playsinline muted aria-label="Camera preview"></video>
+            <canvas id="snapshot" aria-label="Captured image and AI overlay"></canvas>
+            <div class="camera-placeholder" id="camera-placeholder"><span class="camera-icon">◎</span><strong>Camera is offline</strong><p>Activate the camera to begin.</p></div>
+            <div class="camera-guide" aria-hidden="true"><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="shoulder-guide"><i>SHOULDER</i></span><span class="waist-guide"><i>HIP</i></span><span class="camera-scan-line"></span></div>
+            <div class="camera-meta"><span>FORM 4 INNOVATION PROTOTYPE</span><span>NOT A MEDICAL DEVICE</span></div>
+          </div>
+          <div class="camera-controls">
+            <button class="btn btn-primary" id="start-camera" type="button">Activate Camera</button>
+            <button class="btn btn-secondary" id="capture-photo" type="button" disabled>Capture & Analyse</button>
+            <button class="btn btn-ghost" id="reset-photo" type="button" disabled>Reset</button>
+          </div>
+          <div class="ai-status" data-state="loading"><span class="ai-status-dot" aria-hidden="true"></span><span id="ai-model-status">Loading AI model…</span></div>
+          <div class="ai-metrics" id="ai-metrics" hidden>
+            <div><span>Shoulder tilt</span><strong id="metric-shoulder">—</strong></div>
+            <div><span>Hip tilt</span><strong id="metric-hip">—</strong></div>
+            <div><span>Torso shift</span><strong id="metric-shift">—</strong></div>
+            <div><span>Landmark confidence</span><strong id="metric-confidence">—</strong></div>
+          </div>
+          <div class="observation-panel" id="observation-panel" hidden>
+            <div class="observation-heading"><span class="result-label">AI + HUMAN REVIEW</span><p>AI pre-selects observations from the measured posture. Review them before confirming the manual check.</p></div>
+            <label class="observation-item"><input type="checkbox" name="indicator" value="shoulder"><span class="check-box"></span><span>One shoulder appears higher than the other</span></label>
+            <label class="observation-item"><input type="checkbox" name="indicator" value="waist"><span class="check-box"></span><span>Left and right hip levels appear uneven</span></label>
+            <label class="observation-item"><input type="checkbox" name="indicator" value="lean"><span class="check-box"></span><span>The torso appears shifted to one side</span></label>
+            <button class="btn btn-primary full-btn" id="review-observation" type="button">Confirm Manual Review <span>→</span></button>
+          </div>
+          <div class="result-card" id="result-card" aria-live="polite">
+            <span class="result-icon" id="result-icon">◎</span>
+            <div><span class="result-label">SCREENING STATUS</span><h3 id="result-title">Ready to begin</h3><p id="result-text">Activate the camera and capture an image to view the prototype result.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section impact" id="impact">
+      <div class="container">
+        <div class="section-heading reveal"><span class="section-kicker">INNOVATION VALUE</span><h2>Built to be practical, memorable and scalable.</h2></div>
+        <div class="impact-grid">
+          <article class="impact-card reveal"><span>01</span><div class="impact-icon">◉</div><h3>Non-contact</h3><p>Supports a comfortable screening experience without physical contact.</p></article>
+          <article class="impact-card reveal"><span>02</span><div class="impact-icon">⚡</div><h3>Fast</h3><p>A simple workflow designed for school demonstrations and awareness programmes.</p></article>
+          <article class="impact-card reveal"><span>03</span><div class="impact-icon">RM</div><h3>Low-cost</h3><p>Works with existing cameras instead of specialised screening hardware.</p></article>
+          <article class="impact-card reveal"><span>04</span><div class="impact-icon">AI</div><h3>Expandable</h3><p>Can grow through ethical datasets, expert validation and improved AI models.</p></article>
+        </div>
+        <div class="impact-banner reveal">
+          <div><span class="section-kicker">OUR VISION</span><h3>Make early posture awareness accessible to every school.</h3></div>
+          <a class="btn btn-light" href="#contact">Meet the Team <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section comparison">
+      <div class="container comparison-grid">
+        <div class="section-heading align-left reveal"><span class="section-kicker">WHY SMARTSPINE?</span><h2>A practical bridge between awareness and professional care.</h2><p>The prototype does not replace clinicians. It helps students and schools notice visible posture differences and respond responsibly.</p></div>
+        <div class="comparison-table reveal" role="table" aria-label="Comparison of conventional screening and SMARTSPINE">
+          <div class="table-row table-head" role="row"><span>Aspect</span><span>Conventional approach</span><span>SMARTSPINE</span></div>
+          <div class="table-row" role="row"><span>Physical contact</span><span>May be required</span><span><b>No contact</b></span></div>
+          <div class="table-row" role="row"><span>Equipment</span><span>Depends on examiner</span><span><b>Existing camera</b></span></div>
+          <div class="table-row" role="row"><span>Primary purpose</span><span>Physical examination</span><span><b>Awareness and screening</b></span></div>
+          <div class="table-row" role="row"><span>Scalability</span><span>Limited by time and staff</span><span><b>High potential</b></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq" id="faq">
+      <div class="container faq-grid">
+        <div class="section-heading align-left reveal"><span class="section-kicker">FREQUENTLY ASKED</span><h2>Clear answers build trust.</h2><p>These are the points the team should explain confidently to judges and users.</p></div>
+        <div class="accordion reveal">
+          <details><summary>Can SMARTSPINE diagnose scoliosis?<span>+</span></summary><p>No. SMARTSPINE is an educational early-screening prototype based on visible posture asymmetry. Diagnosis must be performed by a qualified healthcare professional.</p></details>
+          <details><summary>Are user images uploaded or stored?<span>+</span></summary><p>In this prototype, images are processed in the browser and are not uploaded to a server. Refreshing or closing the page removes the displayed image.</p></details>
+          <details><summary>Why does the project use a camera?<span>+</span></summary><p>Cameras are widely available, contactless and suitable for building an affordable school-level prototype.</p></details>
+          <details><summary>What is the next development stage?<span>+</span></summary><p>The next stage is expert consultation, ethical data collection, accuracy testing and validation against professional assessment.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container contact-card reveal">
+        <div class="contact-copy">
+          <span class="section-kicker">FORM 4 INNOVATION TEAM</span>
+          <h2>Interested in SMARTSPINE?</h2>
+          <p>Contact the student team for project demonstrations, innovation showcases, collaboration or competition enquiries.</p>
+          <div class="team-tags"><span>Student-led</span><span>Health-tech</span><span>School innovation</span></div>
+        </div>
+        <div class="contact-action">
+          <div class="mail-icon">✉</div>
+          <p>Email the team directly</p>
+          <a class="btn btn-primary full-btn" id="team-email-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=hazmanzafirah%40gmail.com&su=SMARTSPINE%20Innovation%20Enquiry&body=Hello%20SMARTSPINE%20Form%204%20Team%2C%0A%0AI%20would%20like%20to%20learn%20more%20about%20your%20SMARTSPINE%20innovation.%0A%0AName%3A%0ASchool%20/%20Organisation%3A%0APurpose%20of%20enquiry%3A%0A%0AThank%20you." target="_blank" rel="noopener noreferrer">Contact the Form 4 Team <span>↗</span></a>
+          <small class="email-helper">Gmail will open in a new tab with the recipient, subject and message already prepared.</small>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <a class="brand footer-brand" href="#home"><span class="brand-mark" aria-hidden="true">S</span><span class="brand-copy"><strong>SMARTSPINE</strong><small>Early Detection, Better Protection.</small></span></a>
+      <p class="footer-note"><strong>Disclaimer:</strong> This website is an educational innovation prototype. It is not a medical device and does not provide a diagnosis.</p>
+      <p class="copyright">© <span id="year"></span> SMARTSPINE</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
