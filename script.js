@@ -47,12 +47,12 @@
   const yearElement = document.getElementById("year");
   if (yearElement) yearElement.textContent = new Date().getFullYear();
 
-  // Add the Form 4 team email address between the quotation marks below.
+  // Add the SCOLISCAN team email address between the quotation marks below.
   // Example: const TEAM_EMAIL = "scoliscan.team@gmail.com";
   // Leaving it blank still opens a prepared email draft without a recipient.
   const TEAM_EMAIL = "hazmanzafirah@gmail.com";
   const EMAIL_SUBJECT = "SCOLISCAN Innovation Enquiry";
-  const EMAIL_BODY = `Hello SCOLISCAN Form 4 Team,
+  const EMAIL_BODY = `Hello SCOLISCAN Team,
 
 I would like to learn more about your innovation.
 

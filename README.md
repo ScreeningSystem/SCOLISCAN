@@ -1,6 +1,6 @@
 # SCOLISCAN — English Competition Edition
 
-SCOLISCAN is a responsive, camera-based AI posture asymmetry screening prototype created for a Form 4 innovation project.
+SCOLISCAN is a responsive, camera-based AI posture asymmetry screening prototype developed for a school health-tech innovation project.
 
 ## Main features
 
@@ -11,7 +11,7 @@ SCOLISCAN is a responsive, camera-based AI posture asymmetry screening prototype
 - Shoulder tilt, hip tilt and torso-shift measurements
 - AI overlay drawn on the captured image
 - Manual observation review
-- Email contact button for the Form 4 team
+- Email contact button for the SCOLISCAN team
 - Clear medical and privacy disclaimers
 
 ## Add the team email address
@@ -22,10 +22,10 @@ Open `script.js` and find:
 const TEAM_EMAIL = "";
 ```
 
-Insert the real Form 4 team email address between the quotation marks, for example:
+Insert the real SCOLISCAN team email address between the quotation marks, for example:
 
 ```javascript
-const TEAM_EMAIL = "SCOLISCAN.team@school.edu.my";
+const TEAM_EMAIL = "smartspine.team@school.edu.my";
 ```
 
 Do not use the example address unless it is the team’s real address. If the field remains blank, the contact button still opens a prepared email draft, but the visitor must enter the recipient manually.
