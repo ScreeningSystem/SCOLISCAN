@@ -93,7 +93,7 @@ p { margin: 0; }
 .btn-primary { color: white; background: linear-gradient(120deg, var(--blue), #5f77f8 50%, var(--teal)); box-shadow: 0 16px 34px rgba(79,124,255,.22); }
 .btn-primary:hover { box-shadow: 0 20px 40px rgba(79,124,255,.30); }
 .btn-secondary { color: var(--ink); background: white; border: 1px solid var(--line); box-shadow: var(--shadow-soft); }
-.btn-ghost { background: var(--soft); border: 1px solid var(--line); }
+.btn-ghost { color: var(--ink); background: var(--soft); border: 1px solid var(--line); -webkit-text-fill-color: currentColor; }
 .btn-light { background: white; color: var(--ink); }
 .full-btn { width: 100%; justify-content: space-between; }
 .hero-proof { display: flex; gap: 30px; margin-top: 42px; padding-top: 29px; border-top: 1px solid var(--line); }
@@ -214,7 +214,7 @@ p { margin: 0; }
 .camera-meta span:last-child { color: #ff9dab; }
 .camera-controls { display: grid; grid-template-columns: 1.15fr 1.1fr .6fr; gap: 9px; margin-top: 11px; }
 .camera-controls .btn { min-height: 49px; padding: 0 12px; font-size: .75rem; }
-.btn:disabled { opacity: .38; cursor: not-allowed; transform: none; }
+.btn:disabled { opacity: .58; cursor: not-allowed; transform: none; color: #53657a; -webkit-text-fill-color: #53657a; background: #dfe7f0; border-color: rgba(16,34,59,.12); }
 .ai-status { min-height: 41px; margin-top: 10px; padding: 0 13px; display: flex; align-items: center; gap: 10px; border-radius: 12px; color: #b8c8d8; background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.075); font-size: .68rem; }
 .ai-status-dot { width: 8px; height: 8px; flex: 0 0 auto; border-radius: 50%; background: #f6b94d; box-shadow: 0 0 12px rgba(246,185,77,.55); }
 .ai-status[data-state="ready"] .ai-status-dot { background: #77f0dc; box-shadow: 0 0 12px rgba(119,240,220,.55); }
@@ -608,4 +608,28 @@ html, body {
   .camera-controls .btn {
     font-size: .72rem;
   }
+}
+
+/* Reset button visibility fix for mobile/Safari */
+.demo-section .camera-controls .btn-ghost {
+  color: #10223b;
+  -webkit-text-fill-color: #10223b;
+  background: #f4f8ff;
+  border: 1px solid rgba(16,34,59,.14);
+  font-weight: 800;
+}
+
+.demo-section .camera-controls .btn-ghost:not(:disabled) {
+  opacity: 1;
+  color: #10223b;
+  -webkit-text-fill-color: #10223b;
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(0,0,0,.10);
+}
+
+.demo-section .camera-controls .btn-ghost:disabled {
+  opacity: .72;
+  color: #51647a;
+  -webkit-text-fill-color: #51647a;
+  background: #dfe7f0;
 }
