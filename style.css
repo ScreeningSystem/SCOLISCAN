@@ -633,3 +633,28 @@ html, body {
   -webkit-text-fill-color: #51647a;
   background: #dfe7f0;
 }
+
+
+/* Strong Reset button text fix — iPhone/Safari and cached styles */
+.demo-section .camera-controls #reset-photo,
+.demo-section .camera-controls #reset-photo:not(:disabled) {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  opacity: 1 !important;
+  color: #10223b !important;
+  -webkit-text-fill-color: #10223b !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border: 1px solid rgba(16, 34, 59, .18) !important;
+  text-shadow: none !important;
+  font-weight: 800 !important;
+}
+
+.demo-section .camera-controls #reset-photo:disabled {
+  opacity: .82 !important;
+  color: #53657a !important;
+  -webkit-text-fill-color: #53657a !important;
+  background-color: #dfe7f0 !important;
+  background-image: none !important;
+  border-color: rgba(16, 34, 59, .14) !important;
+}
