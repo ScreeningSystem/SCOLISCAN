@@ -386,3 +386,53 @@ details p { padding: 0 21px 21px; color: var(--muted); font-size: .88rem; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+
+.process-track-five { grid-template-columns: repeat(5, 1fr); }
+.process-track-five .process-line { left: 10%; right: 10%; }
+
+.scan-summary { margin-top: 14px; padding: 18px; border: 1px solid rgba(255,255,255,.10); border-radius: 18px; background: rgba(255,255,255,.05); }
+.summary-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.severity-pill { display: inline-flex; align-items: center; min-height: 34px; padding: 0 14px; border-radius: 999px; font-size: .72rem; font-weight: 800; letter-spacing: .02em; }
+.severity-wait { color: white; background: rgba(255,255,255,.12); }
+.severity-low { color: #06251f; background: #77f0dc; }
+.severity-medium { color: #4d3400; background: #f6c866; }
+.severity-high { color: white; background: #ef6676; }
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+.summary-box { padding: 14px; border: 1px solid rgba(255,255,255,.075); border-radius: 14px; background: rgba(255,255,255,.035); }
+.summary-box span { display: block; color: #9eb1c5; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; }
+.summary-box strong { display: block; margin-top: 6px; color: white; font: 800 1rem "Manrope"; }
+.summary-box small { display: block; margin-top: 6px; color: #c4d2de; font-size: .70rem; line-height: 1.5; }
+.exercise-card { margin-top: 12px; padding: 16px; border-radius: 16px; background: rgba(3,13,25,.34); border: 1px solid rgba(255,255,255,.075); }
+.exercise-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.exercise-head h4 { margin-top: 4px; color: white; font-size: 1.05rem; }
+.exercise-badge { padding: 7px 10px; border-radius: 999px; background: rgba(119,240,220,.10); color: #77f0dc; border: 1px solid rgba(119,240,220,.16); font-size: .62rem; font-weight: 800; }
+.exercise-intro, .exercise-disclaimer { margin-top: 10px; color: #b8c8d8; font-size: .74rem; }
+.exercise-list { display: grid; gap: 9px; margin-top: 13px; }
+.exercise-item { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 14px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); }
+.exercise-number { width: 34px; height: 34px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 12px; background: linear-gradient(145deg, var(--blue), var(--teal)); color: white; font: 800 .76rem "Manrope"; }
+.exercise-item strong { display: block; color: white; font-size: .85rem; }
+.exercise-item small { display: block; margin-top: 2px; color: #b8c8d8; font-size: .69rem; }
+
+.profile-grid { display: grid; gap: 12px; margin-top: 26px; }
+.profile-panel { padding: 18px; border: 1px solid rgba(79,124,255,.12); border-radius: 18px; background: white; box-shadow: var(--shadow-soft); }
+.profile-label { display: block; color: var(--blue-dark); font-size: .64rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.profile-panel strong { display: block; margin-top: 10px; font-size: 1rem; line-height: 1.45; }
+.profile-list { margin: 12px 0 0; padding-left: 18px; color: var(--muted); }
+.profile-list li + li { margin-top: 8px; }
+.poster-note { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
+.poster-note p { margin-top: 6px; color: var(--muted); font-size: .78rem; }
+
+@media (max-width: 1080px) {
+  .process-track-five { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .process-track-five { grid-template-columns: repeat(2, 1fr); }
+  .summary-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .process-track-five { grid-template-columns: 1fr; }
+  .summary-head, .exercise-head { display: grid; }
+}

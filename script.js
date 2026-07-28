@@ -24,6 +24,14 @@
   const hipMetric = document.getElementById("metric-hip");
   const shiftMetric = document.getElementById("metric-shift");
   const confidenceMetric = document.getElementById("metric-confidence");
+  const scanSummary = document.getElementById("scan-summary");
+  const severityPill = document.getElementById("severity-pill");
+  const summaryCondition = document.getElementById("summary-condition");
+  const summaryColourText = document.getElementById("summary-colour-text");
+  const doctorRecommendation = document.getElementById("doctor-recommendation");
+  const doctorNote = document.getElementById("doctor-note");
+  const exerciseIntro = document.getElementById("exercise-intro");
+  const exerciseList = document.getElementById("exercise-list");
 
   const MEDIAPIPE_MODULE_URL = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.35/+esm";
   const MEDIAPIPE_WASM_URL = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.35/wasm";
@@ -40,11 +48,11 @@
   if (yearElement) yearElement.textContent = new Date().getFullYear();
 
   // Add the Form 4 team email address between the quotation marks below.
-  // Example: const TEAM_EMAIL = "smartspine.team@gmail.com";
+  // Example: const TEAM_EMAIL = "scoliscan.team@gmail.com";
   // Leaving it blank still opens a prepared email draft without a recipient.
   const TEAM_EMAIL = "hazmanzafirah@gmail.com";
-  const EMAIL_SUBJECT = "SMARTSPINE Innovation Enquiry";
-  const EMAIL_BODY = `Hello SMARTSPINE Form 4 Team,
+  const EMAIL_SUBJECT = "SCOLISCAN Innovation Enquiry";
+  const EMAIL_BODY = `Hello SCOLISCAN Form 4 Team,
 
 I would like to learn more about your innovation.
 
@@ -114,6 +122,94 @@ Thank you.`;
     resultText.textContent = text;
   };
 
+
+  const recommendationMap = {
+    low: {
+      pill: "Green - Good",
+      condition: "Good posture / low asymmetry",
+      colourText: "Green means the posture looks generally balanced in this image.",
+      doctor: "Doctor review is not needed now",
+      doctorNote: "Continue posture monitoring. Repeat the scan if there are concerns.",
+      intro: "Basic posture-support exercises are suggested to maintain good posture habits.",
+      exercises: [
+        { name: "Wall posture hold", frequency: "3 times/week", duration: "10 min" },
+        { name: "Shoulder blade squeeze", frequency: "3 times/week", duration: "10 min" },
+        { name: "Chest stretch", frequency: "3 times/week", duration: "10 min" }
+      ]
+    },
+    medium: {
+      pill: "Yellow - Moderate",
+      condition: "Moderate posture asymmetry",
+      colourText: "Yellow means some visible posture imbalance was detected.",
+      doctor: "Doctor review may be needed if the result repeats",
+      doctorNote: "Repeat the scan with correct standing position. If the result remains, consult a doctor or healthcare professional.",
+      intro: "Simple corrective exercises are suggested together with a repeat scan and observation.",
+      exercises: [
+        { name: "Wall angels", frequency: "4 times/week", duration: "15 min" },
+        { name: "Side stretch", frequency: "4 times/week", duration: "15 min" },
+        { name: "Cat-cow stretch", frequency: "4 times/week", duration: "15 min" }
+      ]
+    },
+    high: {
+      pill: "Red - More Serious",
+      condition: "More serious posture asymmetry",
+      colourText: "Red means a clearer posture imbalance was detected in this image.",
+      doctor: "Doctor review is recommended",
+      doctorNote: "Please seek further assessment from a doctor or qualified healthcare professional. This is not a diagnosis.",
+      intro: "Only gentle posture-support exercises are suggested while waiting for professional advice.",
+      exercises: [
+        { name: "Gentle wall posture hold", frequency: "5 times/week", duration: "10-15 min" },
+        { name: "Shoulder blade squeeze", frequency: "5 times/week", duration: "10 min" },
+        { name: "Gentle side stretch", frequency: "5 times/week", duration: "10 min" }
+      ]
+    }
+  };
+
+  const resetSummaryPanel = () => {
+    if (scanSummary) scanSummary.hidden = true;
+    if (severityPill) {
+      severityPill.className = "severity-pill severity-wait";
+      severityPill.textContent = "Waiting";
+    }
+    if (summaryCondition) summaryCondition.textContent = "Waiting for scan";
+    if (summaryColourText) summaryColourText.textContent = "Green = good, yellow = moderate, red = more serious.";
+    if (doctorRecommendation) doctorRecommendation.textContent = "Not available yet";
+    if (doctorNote) doctorNote.textContent = "A recommendation will appear after the scan.";
+    if (exerciseIntro) exerciseIntro.textContent = "After the analysis, SCOLISCAN will suggest simple exercises that are easy to understand.";
+    if (exerciseList) exerciseList.innerHTML = "";
+  };
+
+  const updateRecommendationPanel = (type, metrics = null, source = "ai") => {
+    const details = recommendationMap[type] || recommendationMap.low;
+    if (scanSummary) scanSummary.hidden = false;
+    if (severityPill) {
+      severityPill.className = `severity-pill severity-${type}`;
+      severityPill.textContent = details.pill;
+    }
+    if (summaryCondition) summaryCondition.textContent = details.condition;
+    if (summaryColourText) {
+      summaryColourText.textContent = metrics
+        ? `Shoulder: ${metrics.shoulderAngle.toFixed(1)}°, Hip: ${metrics.hipAngle.toFixed(1)}°, Body shift: ${metrics.torsoShift.toFixed(1)}%.`
+        : details.colourText;
+    }
+    if (doctorRecommendation) doctorRecommendation.textContent = details.doctor;
+    if (doctorNote) doctorNote.textContent = source === "manual"
+      ? `${details.doctorNote} This suggestion is based on the manual review selection.`
+      : details.doctorNote;
+    if (exerciseIntro) exerciseIntro.textContent = details.intro;
+    if (exerciseList) {
+      exerciseList.innerHTML = details.exercises.map((exercise, index) => `
+        <div class="exercise-item">
+          <span class="exercise-number">0${index + 1}</span>
+          <div>
+            <strong>${exercise.name}</strong>
+            <small>${exercise.frequency} • ${exercise.duration}</small>
+          </div>
+        </div>
+      `).join("");
+    }
+  };
+
   const initPoseLandmarker = async () => {
     setModelStatus("Loading AI model…", "loading");
 
@@ -159,7 +255,7 @@ Thank you.`;
       return true;
     } catch (error) {
       poseInitError = error;
-      console.error("SMARTSPINE AI initialization error:", error);
+      console.error("SCOLISCAN AI initialization error:", error);
       setModelStatus("AI could not load — check internet access", "error");
       return false;
     }
@@ -288,8 +384,8 @@ Thank you.`;
       return {
         type: "high",
         icon: "↗",
-        title: "Marked posture asymmetry detected",
-        text: `AI detected a marked posture difference (shoulder ${shoulderAngle.toFixed(1)}°, hip ${hipAngle.toFixed(1)}°, shift ${torsoShift.toFixed(1)}%). Repeat the image with correct positioning. If the result remains, seek professional assessment. This is not a scoliosis diagnosis.`
+        title: "Red result: more serious posture difference",
+        text: `The scan found a clearer posture difference. Shoulder: ${shoulderAngle.toFixed(1)}°, hip: ${hipAngle.toFixed(1)}°, body shift: ${torsoShift.toFixed(1)}%. Repeat the scan with correct standing position. If the result remains, seek professional assessment. This is not a scoliosis diagnosis.`
       };
     }
 
@@ -297,16 +393,16 @@ Thank you.`;
       return {
         type: "medium",
         icon: "!",
-        title: "Mild posture asymmetry observed",
-        text: `One measurement shows a mild imbalance (shoulder ${shoulderAngle.toFixed(1)}°, hip ${hipAngle.toFixed(1)}°, shift ${torsoShift.toFixed(1)}%). Repeat the screening with the body upright and the camera level.`
+        title: "Yellow result: moderate posture difference",
+        text: `The scan found a moderate posture difference. Shoulder: ${shoulderAngle.toFixed(1)}°, hip: ${hipAngle.toFixed(1)}°, body shift: ${torsoShift.toFixed(1)}%. Repeat the scan with the body standing straight and the camera level.`
       };
     }
 
     return {
       type: "low",
       icon: "✓",
-      title: "Low posture asymmetry in this image",
-      text: `Prototype measurements: shoulder ${shoulderAngle.toFixed(1)}°, hip ${hipAngle.toFixed(1)}°, shift ${torsoShift.toFixed(1)}%. This result evaluates posture in one image only and cannot rule out scoliosis.`
+      title: "Green result: good posture in this image",
+      text: `The scan found low posture difference. Shoulder: ${shoulderAngle.toFixed(1)}°, hip: ${hipAngle.toFixed(1)}°, body shift: ${torsoShift.toFixed(1)}%. This result is based on one image only and cannot rule out scoliosis.`
     };
   };
 
@@ -333,6 +429,7 @@ Thank you.`;
 
       if (!landmarks || landmarks.length < 25) {
         observationPanel.hidden = false;
+        resetSummaryPanel();
         setResult("medium", "!", "Body landmarks were not detected", "Ensure only one person is visible, both shoulders and hips are fully shown, lighting is sufficient, and the person is facing away from the camera.");
         return;
       }
@@ -344,6 +441,7 @@ Thank you.`;
 
       if (minVisibility < 0.48 || shoulderWidth < canvas.width * 0.10) {
         observationPanel.hidden = false;
+        resetSummaryPanel();
         setResult("medium", "!", "Image quality is insufficient", "Stand closer and ensure both shoulders and hips are unobstructed, then capture a new image.");
         return;
       }
@@ -363,10 +461,12 @@ Thank you.`;
 
       const classification = classifyPosture(metrics);
       setResult(classification.type, classification.icon, classification.title, classification.text);
+      updateRecommendationPanel(classification.type, metrics, "ai");
       setModelStatus("AI analysis completed", "ready");
     } catch (error) {
-      console.error("SMARTSPINE analysis error:", error);
+      console.error("SCOLISCAN analysis error:", error);
       observationPanel.hidden = false;
+      resetSummaryPanel();
       setResult("high", "!", "Analysis error", "The model could not process the image. Reload the page, confirm internet access, and try a new image.");
     } finally {
       captureButton.disabled = false;
@@ -397,7 +497,8 @@ Thank you.`;
       observationPanel.hidden = true;
       if (aiMetrics) aiMetrics.hidden = true;
       startTimer();
-      setResult("low", "●", "Camera activated", "Align the shoulders and hips with the guide lines before capturing an image.");
+      resetSummaryPanel();
+      setResult("low", "●", "Camera activated", "Ask the user to stand straight and align the shoulders and hips with the guide lines before scanning.");
     } catch (error) {
       const denied = error?.name === "NotAllowedError" || error?.name === "PermissionDeniedError";
       setResult("high", "!", denied ? "Camera permission was denied" : "Camera could not be activated", denied ? "Allow camera access in the browser settings and try again." : "Ensure a camera is available and open the website through HTTPS or localhost.");
@@ -433,9 +534,11 @@ Thank you.`;
       camera.style.display = "block";
       cameraShell.classList.add("is-live");
       startTimer();
-      setResult("low", "●", "Camera ready", "Reposition the body and capture a new image.");
+      resetSummaryPanel();
+      setResult("low", "●", "Camera ready", "Reposition the body, stand straight and capture a new scan.");
     } else {
       placeholder.style.display = "grid";
+      resetSummaryPanel();
       setResult(null, "◎", "Ready to begin", "Activate the camera to begin the prototype posture screening.");
     }
   });
@@ -444,15 +547,20 @@ Thank you.`;
     const checked = document.querySelectorAll('input[name="indicator"]:checked').length;
 
     if (checked === 0) {
-      setResult("low", "✓", "No manual signs selected", "Continue monitoring posture. Seek professional advice if there are concerns or other symptoms.");
+      setResult("low", "✓", "Green result: no manual signs selected", "Continue monitoring posture. Seek professional advice if there are concerns or other symptoms.");
+      updateRecommendationPanel("low", null, "manual");
     } else if (checked === 1) {
-      setResult("medium", "!", "One manual sign observed", "Repeat the screening with correct positioning and speak with a teacher, parent or healthcare professional if the sign remains.");
+      setResult("medium", "!", "Yellow result: one manual sign observed", "Repeat the screening with correct positioning and speak with a teacher, parent or healthcare professional if the sign remains.");
+      updateRecommendationPanel("medium", null, "manual");
     } else {
-      setResult("high", "↗", "Further assessment is recommended", "Several posture signs were selected. Seek assessment from a doctor or healthcare professional. This is not a scoliosis diagnosis.");
+      setResult("high", "↗", "Red result: further assessment is recommended", "Several posture signs were selected. Seek assessment from a doctor or healthcare professional. This is not a scoliosis diagnosis.");
+      updateRecommendationPanel("high", null, "manual");
     }
 
     resultCard?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   });
+
+  resetSummaryPanel();
 
   document.querySelectorAll("details").forEach((detail) => {
     detail.addEventListener("toggle", () => {
