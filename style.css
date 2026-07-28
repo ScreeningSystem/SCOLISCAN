@@ -436,3 +436,176 @@ details p { padding: 0 21px 21px; color: var(--muted); font-size: .88rem; }
   .process-track-five { grid-template-columns: 1fr; }
   .summary-head, .exercise-head { display: grid; }
 }
+
+
+/* Mobile overflow and centring fix */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.demo-grid,
+.demo-copy,
+.demo-panel,
+.camera-shell,
+.camera-controls,
+.ai-status,
+.ai-metrics,
+.observation-panel,
+.result-card,
+.scan-summary,
+.summary-grid,
+.exercise-card {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.demo-panel {
+  width: 100%;
+  margin-inline: auto;
+}
+
+.camera-shell {
+  width: 100%;
+}
+
+.ai-metrics > div,
+.summary-box,
+.exercise-item,
+.result-card > div {
+  min-width: 0;
+}
+
+.ai-metrics span,
+.summary-box strong,
+.summary-box small,
+.exercise-item strong,
+.exercise-item small,
+.result-card h3,
+.result-card p {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+@media (max-width: 640px) {
+  .demo-section .container {
+    width: min(calc(100% - 20px), var(--container));
+  }
+
+  .demo-grid {
+    width: 100%;
+    justify-items: center;
+  }
+
+  .demo-panel {
+    width: 100%;
+    padding: 10px;
+    border-radius: 22px;
+  }
+
+  .demo-panel-head {
+    min-height: 52px;
+    padding-inline: 4px;
+  }
+
+  .demo-panel-head > div {
+    min-width: 0;
+  }
+
+  .demo-panel-head strong {
+    font-size: .60rem;
+    letter-spacing: .06em;
+  }
+
+  .demo-panel-head small {
+    font-size: .55rem;
+  }
+
+  .camera-shell {
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+    border-radius: 18px;
+  }
+
+  .camera-guide .corner {
+    width: 30px;
+    height: 30px;
+  }
+
+  .shoulder-guide,
+  .waist-guide {
+    left: 14%;
+    right: 14%;
+  }
+
+  .shoulder-guide i,
+  .waist-guide i {
+    right: 2px;
+    font-size: .38rem;
+  }
+
+  .camera-meta {
+    left: 10px;
+    right: 10px;
+    gap: 8px;
+    align-items: flex-end;
+    font-size: .40rem;
+    letter-spacing: .06em;
+  }
+
+  .camera-meta span {
+    max-width: 48%;
+    white-space: normal;
+    line-height: 1.25;
+  }
+
+  .camera-meta span:last-child {
+    text-align: right;
+  }
+
+  .camera-controls,
+  .ai-status,
+  .ai-metrics,
+  .observation-panel,
+  .result-card,
+  .scan-summary {
+    width: 100%;
+  }
+
+  .camera-controls .btn {
+    width: 100%;
+  }
+
+  .ai-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ai-metrics span {
+    white-space: normal;
+    line-height: 1.25;
+  }
+
+  .result-card {
+    align-items: flex-start;
+  }
+
+  .summary-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 390px) {
+  .camera-shell {
+    aspect-ratio: 3 / 4;
+  }
+
+  .demo-panel {
+    padding: 8px;
+  }
+
+  .camera-controls .btn {
+    font-size: .72rem;
+  }
+}
