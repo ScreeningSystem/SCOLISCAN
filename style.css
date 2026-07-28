@@ -436,3 +436,183 @@ details p { padding: 0 21px 21px; color: var(--muted); font-size: .88rem; }
   .process-track-five { grid-template-columns: 1fr; }
   .summary-head, .exercise-head { display: grid; }
 }
+
+/* Mobile layout hardening: prevents the scanner panel from shifting or overflowing in iPhone/WhatsApp browsers. */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.demo-section,
+.demo-section .container,
+.demo-grid,
+.demo-panel,
+.camera-shell,
+.camera-controls,
+.ai-status,
+.ai-metrics,
+.observation-panel,
+.result-card,
+.scan-summary {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.demo-panel,
+.camera-shell {
+  width: 100%;
+}
+
+/* Keep Reset readable in Safari and in-app browsers, both before and after activation. */
+#reset-photo,
+#reset-photo:disabled,
+#reset-photo:not(:disabled) {
+  color: #10223b !important;
+  -webkit-text-fill-color: #10223b !important;
+  background: #f4f7fb !important;
+  border: 1px solid rgba(16, 34, 59, .16) !important;
+  opacity: 1 !important;
+  font-weight: 800 !important;
+  text-shadow: none !important;
+}
+
+#reset-photo:disabled {
+  color: #607086 !important;
+  -webkit-text-fill-color: #607086 !important;
+  background: #dfe7f0 !important;
+}
+
+#reset-photo:not(:disabled) {
+  color: #10223b !important;
+  -webkit-text-fill-color: #10223b !important;
+  background: #ffffff !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .12) !important;
+}
+
+@media (max-width: 640px) {
+  .demo-section {
+    overflow: hidden;
+  }
+
+  .demo-section .container {
+    width: calc(100% - 24px);
+    margin-inline: auto;
+  }
+
+  .demo-grid {
+    width: 100%;
+    gap: 34px;
+  }
+
+  .demo-panel {
+    width: 100%;
+    margin-inline: auto;
+    padding: 10px;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  .demo-panel-head {
+    padding-inline: 4px;
+  }
+
+  .camera-shell {
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+    margin-inline: auto;
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+  .camera-shell video,
+  .camera-shell canvas {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+  .camera-guide,
+  .camera-meta {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .camera-meta {
+    left: 10px;
+    right: 10px;
+    gap: 8px;
+    font-size: .42rem;
+  }
+
+  .shoulder-guide,
+  .waist-guide {
+    left: 15%;
+    right: 15%;
+  }
+
+  .shoulder-guide i,
+  .waist-guide i {
+    right: 2px;
+    max-width: 82px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .camera-controls {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .camera-controls .btn {
+    width: 100%;
+    min-width: 0;
+    min-height: 58px;
+    padding-inline: 14px;
+    text-align: center;
+  }
+
+  .ai-status,
+  .ai-metrics,
+  .observation-panel,
+  .result-card,
+  .scan-summary {
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .ai-metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ai-metrics > div {
+    min-width: 0;
+  }
+
+  .ai-metrics span,
+  .ai-metrics strong {
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 390px) {
+  .demo-section .container {
+    width: calc(100% - 18px);
+  }
+
+  .demo-panel {
+    padding: 8px;
+  }
+
+  .camera-shell {
+    aspect-ratio: 3 / 4;
+  }
+
+  .ai-metrics {
+    grid-template-columns: 1fr;
+  }
+}
