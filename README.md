@@ -1,6 +1,6 @@
-# SMARTSPINE — English Competition Edition
+# SCOLISCAN — English Competition Edition
 
-SMARTSPINE is a responsive, camera-based AI posture asymmetry screening prototype created for a Form 4 innovation project.
+SCOLISCAN is a responsive, camera-based AI posture asymmetry screening prototype created for a Form 4 innovation project.
 
 ## Main features
 
@@ -25,7 +25,7 @@ const TEAM_EMAIL = "";
 Insert the real Form 4 team email address between the quotation marks, for example:
 
 ```javascript
-const TEAM_EMAIL = "smartspine.team@school.edu.my";
+const TEAM_EMAIL = "SCOLISCAN.team@school.edu.my";
 ```
 
 Do not use the example address unless it is the team’s real address. If the field remains blank, the contact button still opens a prepared email draft, but the visitor must enter the recipient manually.
@@ -60,7 +60,7 @@ The AI model is loaded from the internet when the page starts. The computer ther
 
 ## Important limitation
 
-SMARTSPINE is an educational early-screening prototype. Its angle thresholds are prototype heuristics, not clinically validated diagnostic thresholds. It must not be presented as a medical diagnosis or a replacement for professional examination.
+SCOLISCAN is an educational early-screening prototype. Its angle thresholds are prototype heuristics, not clinically validated diagnostic thresholds. It must not be presented as a medical diagnosis or a replacement for professional examination.
 
 
 ## Team email
