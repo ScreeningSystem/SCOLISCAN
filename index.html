@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="SCOLISCAN is a camera-based AI posture asymmetry screening prototype developed for school health awareness." />
+  <meta name="description" content="SCOLISCAN is a camera-based AI posture asymmetry screening prototype created by Form 4 students for school health awareness." />
   <meta name="theme-color" content="#ffffff" />
   <title>SCOLISCAN | AI Posture Screening Innovation</title>
+  <link rel="icon" type="image/png" href="SCOLISCAN_mark.png" />
+  <link rel="apple-touch-icon" href="SCOLISCAN_mark.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=7" />
+  <link rel="stylesheet" href="style.css?v=10" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -19,7 +21,9 @@
   <header class="site-header" id="home">
     <nav class="nav container" aria-label="Main navigation">
       <a class="brand" href="#home" aria-label="SCOLISCAN home">
-       <img class="brand-logo" src="SCOLISCAN_logo.jpg" alt="SCOLISCAN logo" />
+        <span class="brand-mark brand-mark-logo" aria-hidden="true">
+          <img src="SCOLISCAN_mark.png" alt="" />
+        </span>
         <span class="brand-copy"><strong>SCOLISCAN</strong><small>AI Health-Tech Innovation</small></span>
       </a>
 
@@ -39,9 +43,12 @@
     <section class="hero section">
       <div class="container hero-grid">
         <div class="hero-copy reveal">
-          <div class="eyebrow"><span></span> School Health-Tech Innovation</div>
+          <div class="eyebrow"><span></span> Student Health-Tech Innovation</div>
+          <div class="hero-brand-lockup" aria-label="SCOLISCAN project logo">
+            <img src="SCOLISCAN_logo.jpg" alt="SCOLISCAN — AI-Based Early Scoliosis Screening System" />
+          </div>
           <h1>See posture differently. <em>Screen earlier.</em></h1>
-          <p class="lead">SCOLISCAN is an AI-based early scoliosis screening system that uses a camera to check visible posture asymmetry at the shoulders, hips and torso—helping schools create earlier awareness and faster follow-up.</p>
+          <p class="lead">SCOLISCAN is a camera-based AI prototype that identifies visible posture asymmetry at the shoulders, hips and torso—helping schools promote earlier awareness and professional follow-up.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#demo">Launch AI Demo <span>→</span></a>
             <a class="btn btn-secondary" href="#about">Explore the Innovation</a>
@@ -59,7 +66,7 @@
           <div class="dashboard-card">
             <div class="dashboard-head">
               <div><span class="live-dot"></span><strong>POSTURE SCAN</strong></div>
-              <span class="prototype-chip">EARLY DETECTION</span>
+              <span class="prototype-chip">PROTOTYPE</span>
             </div>
             <div class="scan-stage">
               <div class="scan-grid"></div>
@@ -91,7 +98,7 @@
         </div>
       </div>
       <div class="container trust-strip reveal" aria-label="Project strengths">
-        <span>LOW-COST</span><i></i><span>NON-CONTACT</span><i></i><span>SCHOOL-FRIENDLY</span><i></i><span>SCALABLE</span><i></i><span>INNOVATION-DRIVEN</span>
+        <span>LOW-COST</span><i></i><span>NON-CONTACT</span><i></i><span>SCHOOL-FRIENDLY</span><i></i><span>SCALABLE</span><i></i><span>STUDENT-LED</span>
       </div>
     </section>
 
@@ -120,16 +127,15 @@
     <section class="section process" id="how-it-works">
       <div class="container">
         <div class="section-heading reveal">
-          <span class="section-kicker">HOW SCOLISCAN WORKS</span>
-          <h2>One camera. Five easy steps.</h2>
+          <span class="section-kicker">HOW IT WORKS</span>
+          <h2>One camera. Four simple steps.</h2>
         </div>
-        <div class="process-track process-track-five">
+        <div class="process-track">
           <div class="process-line"><span></span></div>
-          <article class="process-step reveal"><div class="step-icon">01</div><h3>Camera On</h3><p>Turn on the camera and make sure the full upper body is visible.</p></article>
-          <article class="process-step reveal"><div class="step-icon">02</div><h3>Stand Straight</h3><p>Stand upright with your back facing the camera in a bright area.</p></article>
-          <article class="process-step reveal"><div class="step-icon">03</div><h3>AI Scan</h3><p>The system scans and analyses shoulder level, hip level and body alignment.</p></article>
-          <article class="process-step reveal"><div class="step-icon">04</div><h3>View Data</h3><p>Easy-to-understand posture data appears on the screen for the team and user.</p></article>
-          <article class="process-step reveal"><div class="step-icon">05</div><h3>Get Advice</h3><p>The system shows the colour result, doctor recommendation and simple exercise suggestion.</p></article>
+          <article class="process-step reveal"><div class="step-icon">01</div><h3>Position</h3><p>Stand upright with your back facing the camera in a bright, uncluttered space.</p></article>
+          <article class="process-step reveal"><div class="step-icon">02</div><h3>Capture</h3><p>Take a clear image with both shoulders and hips fully visible.</p></article>
+          <article class="process-step reveal"><div class="step-icon">03</div><h3>Analyse</h3><p>AI detects key body landmarks and calculates shoulder, hip and torso alignment.</p></article>
+          <article class="process-step reveal"><div class="step-icon">04</div><h3>Respond</h3><p>Review the screening result and seek professional assessment when needed.</p></article>
         </div>
       </div>
     </section>
@@ -138,8 +144,8 @@
       <div class="container demo-grid">
         <div class="demo-copy reveal">
           <span class="section-kicker">LIVE AI PROTOTYPE</span>
-          <h2>Turn on the camera and get a simple posture screening result.</h2>
-          <p>The system asks the user to stand straight, scans posture automatically, and displays simple data, colour status, doctor recommendation and exercise guidance directly in the browser.</p>
+          <h2>Turn on the camera and test the screening flow.</h2>
+          <p>The model identifies shoulder and hip landmarks, calculates posture angles, and displays a screening-level interpretation directly in your browser.</p>
           <div class="demo-note"><span>!</span><div><strong>Important medical notice</strong><p>SCOLISCAN does not diagnose scoliosis. Any persistent concern should be assessed by a qualified healthcare professional.</p></div></div>
           <div class="demo-tips">
             <div><strong>01</strong><span>Use bright, even lighting.</span></div>
@@ -158,60 +164,30 @@
             <canvas id="snapshot" aria-label="Captured image and AI overlay"></canvas>
             <div class="camera-placeholder" id="camera-placeholder"><span class="camera-icon">◎</span><strong>Camera is offline</strong><p>Activate the camera to begin.</p></div>
             <div class="camera-guide" aria-hidden="true"><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="shoulder-guide"><i>SHOULDER</i></span><span class="waist-guide"><i>HIP</i></span><span class="camera-scan-line"></span></div>
-            <div class="camera-meta"><span>SCOLISCAN INNOVATION PROTOTYPE</span><span>NOT A MEDICAL DEVICE</span></div>
+            <div class="camera-meta"><span>FORM 4 INNOVATION PROTOTYPE</span><span>NOT A MEDICAL DEVICE</span></div>
           </div>
           <div class="camera-controls">
-            <button class="btn btn-primary" id="start-camera" type="button">1. Turn On Camera</button>
-            <button class="btn btn-secondary" id="capture-photo" type="button" disabled>2. Scan & Analyse</button>
-            <button class="btn btn-ghost" id="reset-photo" type="button" disabled>3. Reset</button>
+            <button class="btn btn-primary" id="start-camera" type="button">Activate Camera</button>
+            <button class="btn btn-secondary" id="capture-photo" type="button" disabled>Capture & Analyse</button>
+            <button class="btn btn-ghost" id="reset-photo" type="button" disabled>Reset</button>
           </div>
           <div class="ai-status" data-state="loading"><span class="ai-status-dot" aria-hidden="true"></span><span id="ai-model-status">Loading AI model…</span></div>
           <div class="ai-metrics" id="ai-metrics" hidden>
-            <div><span>Shoulder difference</span><strong id="metric-shoulder">—</strong></div>
-            <div><span>Hip difference</span><strong id="metric-hip">—</strong></div>
-            <div><span>Body shift</span><strong id="metric-shift">—</strong></div>
-            <div><span>Scan confidence</span><strong id="metric-confidence">—</strong></div>
+            <div><span>Shoulder tilt</span><strong id="metric-shoulder">—</strong></div>
+            <div><span>Hip tilt</span><strong id="metric-hip">—</strong></div>
+            <div><span>Torso shift</span><strong id="metric-shift">—</strong></div>
+            <div><span>Landmark confidence</span><strong id="metric-confidence">—</strong></div>
           </div>
           <div class="observation-panel" id="observation-panel" hidden>
-            <div class="observation-heading"><span class="result-label">AI + HUMAN REVIEW</span><p>SCOLISCAN will pre-select visible posture signs. Review them and confirm the manual check.</p></div>
+            <div class="observation-heading"><span class="result-label">AI + HUMAN REVIEW</span><p>AI pre-selects observations from the measured posture. Review them before confirming the manual check.</p></div>
             <label class="observation-item"><input type="checkbox" name="indicator" value="shoulder"><span class="check-box"></span><span>One shoulder appears higher than the other</span></label>
             <label class="observation-item"><input type="checkbox" name="indicator" value="waist"><span class="check-box"></span><span>Left and right hip levels appear uneven</span></label>
             <label class="observation-item"><input type="checkbox" name="indicator" value="lean"><span class="check-box"></span><span>The torso appears shifted to one side</span></label>
-            <button class="btn btn-primary full-btn" id="review-observation" type="button">3. Confirm Review <span>→</span></button>
+            <button class="btn btn-primary full-btn" id="review-observation" type="button">Confirm Manual Review <span>→</span></button>
           </div>
           <div class="result-card" id="result-card" aria-live="polite">
             <span class="result-icon" id="result-icon">◎</span>
             <div><span class="result-label">SCREENING STATUS</span><h3 id="result-title">Ready to begin</h3><p id="result-text">Activate the camera and capture an image to view the prototype result.</p></div>
-          </div>
-          <div class="scan-summary" id="scan-summary" hidden>
-            <div class="summary-head">
-              <span class="result-label">SIMPLE RESULT SUMMARY</span>
-              <span class="severity-pill severity-wait" id="severity-pill">Waiting</span>
-            </div>
-            <div class="summary-grid">
-              <div class="summary-box">
-                <span>Posture condition</span>
-                <strong id="summary-condition">Waiting for scan</strong>
-                <small id="summary-colour-text">Green = good, yellow = moderate, red = more serious.</small>
-              </div>
-              <div class="summary-box">
-                <span>Doctor recommendation</span>
-                <strong id="doctor-recommendation">Not available yet</strong>
-                <small id="doctor-note">A recommendation will appear after the scan.</small>
-              </div>
-            </div>
-            <div class="exercise-card">
-              <div class="exercise-head">
-                <div>
-                  <span class="result-label">EXERCISE RECOMMENDATION</span>
-                  <h4>Suggested follow-up exercise</h4>
-                </div>
-                <span class="exercise-badge">Educational guide</span>
-              </div>
-              <p class="exercise-intro" id="exercise-intro">After the analysis, SCOLISCAN will suggest simple exercises that are easy to understand.</p>
-              <div class="exercise-list" id="exercise-list"></div>
-              <p class="exercise-disclaimer">These are school-level posture exercises only and do not replace medical treatment.</p>
-            </div>
           </div>
         </div>
       </div>
@@ -248,9 +224,9 @@
 
     <section class="section faq" id="faq">
       <div class="container faq-grid">
-        <div class="section-heading align-left reveal"><span class="section-kicker">FREQUENTLY ASKED</span><h2>Clear answers build trust.</h2><p>Explore how SCOLISCAN works, what it can and cannot do, and the direction of its future development.</p></div>
+        <div class="section-heading align-left reveal"><span class="section-kicker">FREQUENTLY ASKED</span><h2>Clear answers build trust.</h2><p>These are the points the team should explain confidently to judges and users.</p></div>
         <div class="accordion reveal">
-          <details><summary>Can SCOLISCAN diagnose scoliosis or replace a doctor?<span>+</span></summary><p>No. SCOLISCAN is an educational early-screening prototype based on visible posture asymmetry. It can suggest whether a doctor review may be needed, but diagnosis must be performed by a qualified healthcare professional.</p></details>
+          <details><summary>Can SCOLISCAN diagnose scoliosis?<span>+</span></summary><p>No. SCOLISCAN is an educational early-screening prototype based on visible posture asymmetry. Diagnosis must be performed by a qualified healthcare professional.</p></details>
           <details><summary>Are user images uploaded or stored?<span>+</span></summary><p>In this prototype, images are processed in the browser and are not uploaded to a server. Refreshing or closing the page removes the displayed image.</p></details>
           <details><summary>Why does the project use a camera?<span>+</span></summary><p>Cameras are widely available, contactless and suitable for building an affordable school-level prototype.</p></details>
           <details><summary>What is the next development stage?<span>+</span></summary><p>The next stage is expert consultation, ethical data collection, accuracy testing and validation against professional assessment.</p></details>
@@ -261,40 +237,16 @@
     <section class="section contact-section" id="contact">
       <div class="container contact-card reveal">
         <div class="contact-copy">
-          <span class="section-kicker">SCOLISCAN TEAM PROFILE</span>
-          <h2>Project team and school information.</h2>
-          <p>This innovation is developed by the SCOLISCAN innovation team from Maahad Tahfiz Negeri Pahang. The content below is aligned with the competition poster and can be used for project showcase purposes.</p>
-          <div class="team-tags"><span>AI-based screening</span><span>School innovation</span><span>Early detection</span><span>Innovation-driven</span></div>
-          <div class="profile-grid">
-            <div class="profile-panel">
-              <span class="profile-label">School</span>
-              <strong>MAAHAD TAHFIZ NEGERI PAHANG</strong>
-            </div>
-            <div class="profile-panel">
-              <span class="profile-label">Team Members</span>
-              <ul class="profile-list">
-                <li>MUHAMMAD ALIF ZAFRAN BIN MUHAMMAD ILHAM FIRDAUS</li>
-                <li>AHMAD DANISH FARIS BIN ABDUL GHONI</li>
-                <li>SAIRISH NURZAFIRAH BINTI SAIFUL HAZMAN</li>
-                <li>FOUDLA HUNEIFA BINTI BADLI SHAH</li>
-              </ul>
-            </div>
-            <div class="profile-panel">
-              <span class="profile-label">Supervisor</span>
-              <strong>HANAN SOFIYYAH BINTI KHAIRUL ANUWAR</strong>
-            </div>
-          </div>
+          <span class="section-kicker">FORM 4 INNOVATION TEAM</span>
+          <h2>Interested in SCOLISCAN?</h2>
+          <p>Contact the student team for project demonstrations, innovation showcases, collaboration or competition enquiries.</p>
+          <div class="team-tags"><span>Student-led</span><span>Health-tech</span><span>School innovation</span></div>
         </div>
         <div class="contact-action">
           <div class="mail-icon">✉</div>
-          <p>Contact the team directly</p>
-          <a class="btn btn-primary full-btn" id="team-email-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=hazmanzafirah%40gmail.com&su=SCOLISCAN%20Innovation%20Enquiry&body=Hello%20SCOLISCAN%20Team%2C%0A%0AI%20would%20like%20to%20learn%20more%20about%20your%20SCOLISCAN%20innovation.%0A%0AName%3A%0ASchool%20/%20Organisation%3A%0APurpose%20of%20enquiry%3A%0A%0AThank%20you." target="_blank" rel="noopener noreferrer">Contact the SCOLISCAN Team <span>↗</span></a>
+          <p>Email the team directly</p>
+          <a class="btn btn-primary full-btn" id="team-email-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=hazmanzafirah%40gmail.com&su=SCOLISCAN%20Innovation%20Enquiry&body=Hello%20SCOLISCAN%20Form%204%20Team%2C%0A%0AI%20would%20like%20to%20learn%20more%20about%20your%20SCOLISCAN%20innovation.%0A%0AName%3A%0ASchool%20%2F%20Organisation%3A%0APurpose%20of%20enquiry%3A%0A%0AThank%20you." target="_blank" rel="noopener noreferrer">Contact the Form 4 Team <span>↗</span></a>
           <small class="email-helper">Gmail will open in a new tab with the recipient, subject and message already prepared.</small>
-          <div class="poster-note">
-            <span class="result-label">Poster-aligned information</span>
-            <p>Tagline: <strong>Early Detection, Better Protection.</strong></p>
-            <p>Purpose: AI-based early scoliosis screening system for students, teachers and schools.</p>
-          </div>
         </div>
       </div>
     </section>
@@ -302,12 +254,12 @@
 
   <footer class="site-footer">
     <div class="container footer-grid">
-      <a class="brand footer-brand" href="#home"><span class="brand-mark" aria-hidden="true">S</span><span class="brand-copy"><strong>SCOLISCAN</strong><small>Early Detection, Better Protection.</small></span></a>
+      <a class="brand footer-brand" href="#home"><span class="brand-mark brand-mark-logo" aria-hidden="true"><img src="SCOLISCAN_mark.png" alt="" /></span><span class="brand-copy"><strong>SCOLISCAN</strong><small>Early Detection, Better Protection.</small></span></a>
       <p class="footer-note"><strong>Disclaimer:</strong> This website is an educational innovation prototype. It is not a medical device and does not provide a diagnosis.</p>
       <p class="copyright">© <span id="year"></span> SCOLISCAN</p>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=10"></script>
 </body>
 </html>

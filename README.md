@@ -1,67 +1,25 @@
-# SCOLISCAN — English Competition Edition
+# SCOLISCAN — GitHub Pages Ready
 
-SCOLISCAN is a responsive, camera-based AI posture asymmetry screening prototype developed for a school health-tech innovation project.
+SCOLISCAN is an AI-based early scoliosis/posture asymmetry screening prototype for school health awareness. It uses a browser camera and MediaPipe Pose Landmarker to estimate visible shoulder, hip and torso asymmetry.
 
-## Main features
+## Upload to GitHub
+1. Open the `ScreeningSystem/SCOLISCAN` repository.
+2. Upload/replace all files in this folder directly in the repository root.
+3. Commit the changes.
+4. Keep GitHub Pages set to `main` and `/(root)`.
+5. Wait for **Actions → pages build and deployment** to show a green check.
+6. Open `https://screeningsystem.github.io/SCOLISCAN/` and hard-refresh with `Ctrl + Shift + R`.
 
-- Bold, bright health-tech design in English
-- Responsive desktop, tablet and mobile layout
-- Live camera preview
-- MediaPipe Pose Landmarker analysis
-- Shoulder tilt, hip tilt and torso-shift measurements
-- AI overlay drawn on the captured image
-- Manual observation review
-- Email contact button for the SCOLISCAN team
-- Clear medical and privacy disclaimers
+## Main files
+- `index.html` — website content and interface
+- `style.css` — responsive competition-ready design
+- `script.js` — camera, AI pose analysis and Gmail contact button
+- `SCOLISCAN_logo.jpg` — supplied full project logo, cropped for web use
+- `SCOLISCAN_mark.png` — emblem used in header/footer/favicon
+- `.nojekyll` — ensures GitHub Pages serves the site as plain static files
 
-## Add the team email address
+## Contact
+The website contact button opens Gmail Web addressed to `hazmanzafirah@gmail.com`.
 
-Open `script.js` and find:
-
-```javascript
-const TEAM_EMAIL = "";
-```
-
-Insert the real SCOLISCAN team email address between the quotation marks, for example:
-
-```javascript
-const TEAM_EMAIL = "smartspine.team@school.edu.my";
-```
-
-Do not use the example address unless it is the team’s real address. If the field remains blank, the contact button still opens a prepared email draft, but the visitor must enter the recipient manually.
-
-## Start the website
-
-### Windows method
-
-1. Extract the ZIP file.
-2. Open the project folder.
-3. Double-click `START_LOCAL_SERVER.bat`.
-4. Open `http://localhost:8000` if the browser does not open automatically.
-5. Allow camera access when requested.
-
-### Manual method
-
-Run this command inside the project folder:
-
-```bash
-python -m http.server 8000
-```
-
-Then open:
-
-```text
-http://localhost:8000
-```
-
-## AI requirements
-
-The AI model is loaded from the internet when the page starts. The computer therefore needs internet access during the demonstration. Camera access works best through `localhost` or an HTTPS-hosted website.
-
-## Important limitation
-
-SCOLISCAN is an educational early-screening prototype. Its angle thresholds are prototype heuristics, not clinically validated diagnostic thresholds. It must not be presented as a medical diagnosis or a replacement for professional examination.
-
-
-## Team email
-The Contact button opens Gmail Web in a new tab and prepares an enquiry to hazmanzafirah@gmail.com. The visitor must be signed in to Gmail and press Send manually.
+## Medical notice
+SCOLISCAN is an educational screening prototype, not a medical device. It does not diagnose scoliosis and does not replace professional clinical assessment or radiographic examination.
