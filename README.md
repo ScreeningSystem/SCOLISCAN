@@ -1,30 +1,16 @@
-# SCOLISCAN — GitHub Pages Ready
+# SCOLISCAN v14 — Screening-to-Action Upgrade
 
-SCOLISCAN is an AI-based early scoliosis/posture asymmetry screening prototype for school health awareness. It uses a browser camera and MediaPipe Pose Landmarker to estimate visible shoulder, hip and torso asymmetry.
+Upload all files in this folder to the root of the GitHub Pages repository.
 
-## Upload to GitHub
-1. Open the `ScreeningSystem/SCOLISCAN` repository.
-2. Upload/replace all files in this folder directly in the repository root.
-3. Commit the changes.
-4. Keep GitHub Pages set to `main` and `/(root)`.
-5. Wait for **Actions → pages build and deployment** to show a green check.
-6. Open `https://screeningsystem.github.io/SCOLISCAN/` and hard-refresh with `Ctrl + Shift + R`.
+## v14 upgrades
+- Initial camera-based posture assessment
+- Clear screening result with measured shoulder tilt, hip tilt, torso shift and landmark confidence
+- Screening-informed posture exercise suggestions
+- General spinal-health guidance
+- Early-intervention / professional follow-up recommendation
+- Corrected tilt-angle calculation for mirrored camera feeds (e.g. 177.9° is normalised to 2.1°)
+- Existing Form 4 Innovation Team section and team photo retained
+- Mobile layout retained
 
-## Main files
-- `index.html` — website content and interface
-- `style.css` — responsive competition-ready design
-- `script.js` — camera, AI pose analysis and Gmail contact button
-- `SCOLISCAN_logo.jpg` — supplied full project logo, cropped for web use
-- `SCOLISCAN_mark.png` — emblem used in header/footer/favicon
-- `.nojekyll` — ensures GitHub Pages serves the site as plain static files
-
-## Contact
-The website contact button opens Gmail Web addressed to `hazmanzafirah@gmail.com`.
-
-## Medical notice
-SCOLISCAN is an educational screening prototype, not a medical device. It does not diagnose scoliosis and does not replace professional clinical assessment or radiographic examination.
-
-## v13 updates
-- Reset button text is now dark and clearly visible on mobile.
-- Added `SCOLISCAN_team.jpg` as a featured team proof image in the Form 4 Innovation Team section.
-- Updated stylesheet cache version to `v=13` so mobile browsers load the latest layout.
+## Important
+SCOLISCAN is an educational screening prototype. It does not diagnose scoliosis and the exercise suggestions are not personalised medical treatment.

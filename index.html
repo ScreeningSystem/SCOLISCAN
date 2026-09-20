@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=13" />
+  <link rel="stylesheet" href="style.css?v=14" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -128,14 +128,15 @@
       <div class="container">
         <div class="section-heading reveal">
           <span class="section-kicker">HOW IT WORKS</span>
-          <h2>One camera. Four simple steps.</h2>
+          <h2>One camera. Five smart steps.</h2>
         </div>
         <div class="process-track">
           <div class="process-line"><span></span></div>
-          <article class="process-step reveal"><div class="step-icon">01</div><h3>Position</h3><p>Stand upright with your back facing the camera in a bright, uncluttered space.</p></article>
-          <article class="process-step reveal"><div class="step-icon">02</div><h3>Capture</h3><p>Take a clear image with both shoulders and hips fully visible.</p></article>
-          <article class="process-step reveal"><div class="step-icon">03</div><h3>Analyse</h3><p>AI detects key body landmarks and calculates shoulder, hip and torso alignment.</p></article>
-          <article class="process-step reveal"><div class="step-icon">04</div><h3>Respond</h3><p>Review the screening result and seek professional assessment when needed.</p></article>
+          <article class="process-step reveal"><div class="step-icon">01</div><h3>Assess</h3><p>Stand upright with your back facing the camera so SCOLISCAN can perform an initial posture assessment.</p></article>
+          <article class="process-step reveal"><div class="step-icon">02</div><h3>Analyse</h3><p>AI detects shoulder and hip landmarks and calculates visible posture asymmetry.</p></article>
+          <article class="process-step reveal"><div class="step-icon">03</div><h3>View Result</h3><p>See the screening status together with shoulder tilt, hip tilt, torso shift and landmark confidence.</p></article>
+          <article class="process-step reveal"><div class="step-icon">04</div><h3>Get Guidance</h3><p>Receive screening-informed posture exercise suggestions and general spinal-health guidance.</p></article>
+          <article class="process-step reveal"><div class="step-icon">05</div><h3>Act Early</h3><p>Follow the recommended next step and seek professional assessment when persistent signs are detected.</p></article>
         </div>
       </div>
     </section>
@@ -144,8 +145,8 @@
       <div class="container demo-grid">
         <div class="demo-copy reveal">
           <span class="section-kicker">LIVE AI PROTOTYPE</span>
-          <h2>Turn on the camera and test the screening flow.</h2>
-          <p>The model identifies shoulder and hip landmarks, calculates posture angles, and displays a screening-level interpretation directly in your browser.</p>
+          <h2>From initial assessment to practical next steps.</h2>
+          <p>SCOLISCAN analyses visible posture, displays a screening result, suggests general posture exercises, provides spinal-health guidance and encourages early professional follow-up when needed.</p>
           <div class="demo-note"><span>!</span><div><strong>Important medical notice</strong><p>SCOLISCAN does not diagnose scoliosis. Any persistent concern should be assessed by a qualified healthcare professional.</p></div></div>
           <div class="demo-tips">
             <div><strong>01</strong><span>Use bright, even lighting.</span></div>
@@ -189,6 +190,50 @@
             <span class="result-icon" id="result-icon">◎</span>
             <div><span class="result-label">SCREENING STATUS</span><h3 id="result-title">Ready to begin</h3><p id="result-text">Activate the camera and capture an image to view the prototype result.</p></div>
           </div>
+
+          <section class="care-plan" id="care-plan" hidden aria-live="polite">
+            <div class="care-plan-head">
+              <div>
+                <span class="result-label">SCOLISCAN NEXT-STEP GUIDANCE</span>
+                <h3>Your screening-informed plan</h3>
+              </div>
+              <span class="care-level" id="care-level">Waiting</span>
+            </div>
+
+            <div class="care-grid">
+              <article class="care-card care-assessment">
+                <span class="care-index">01</span>
+                <div><small>INITIAL ASSESSMENT</small><h4 id="assessment-summary">Waiting for analysis</h4><p id="assessment-detail">Your posture measurements will appear here after a successful scan.</p></div>
+              </article>
+
+              <article class="care-card">
+                <span class="care-index">02</span>
+                <div><small>SCREENING RESULT</small><h4 id="screening-summary">Not available yet</h4><p id="screening-detail">SCOLISCAN will summarise the screening status in clear language.</p></div>
+              </article>
+
+              <article class="care-card care-wide">
+                <span class="care-index">03</span>
+                <div class="care-card-content">
+                  <small>SUGGESTED POSTURE EXERCISES</small>
+                  <h4>Screening-informed movement suggestions</h4>
+                  <p class="care-intro">These are general posture and mobility activities, not personalised medical treatment.</p>
+                  <div class="exercise-list" id="exercise-list"></div>
+                </div>
+              </article>
+
+              <article class="care-card">
+                <span class="care-index">04</span>
+                <div><small>SPINAL-HEALTH GUIDANCE</small><h4 id="health-guidance-title">Healthy posture habits</h4><p id="health-guidance">Guidance will appear after the scan.</p></div>
+              </article>
+
+              <article class="care-card care-action">
+                <span class="care-index">05</span>
+                <div><small>EARLY INTERVENTION</small><h4 id="intervention-title">Recommended next step</h4><p id="intervention-guidance">A next-step recommendation will appear after the scan.</p></div>
+              </article>
+            </div>
+
+            <p class="care-disclaimer"><strong>Safety note:</strong> SCOLISCAN is an educational screening prototype. Stop any exercise that causes pain or discomfort. It does not diagnose scoliosis or prescribe treatment.</p>
+          </section>
         </div>
       </div>
     </section>
@@ -287,6 +332,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=10"></script>
+  <script src="script.js?v=14"></script>
 </body>
 </html>

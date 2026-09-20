@@ -24,6 +24,17 @@
   const hipMetric = document.getElementById("metric-hip");
   const shiftMetric = document.getElementById("metric-shift");
   const confidenceMetric = document.getElementById("metric-confidence");
+  const carePlan = document.getElementById("care-plan");
+  const careLevel = document.getElementById("care-level");
+  const assessmentSummary = document.getElementById("assessment-summary");
+  const assessmentDetail = document.getElementById("assessment-detail");
+  const screeningSummary = document.getElementById("screening-summary");
+  const screeningDetail = document.getElementById("screening-detail");
+  const exerciseList = document.getElementById("exercise-list");
+  const healthGuidanceTitle = document.getElementById("health-guidance-title");
+  const healthGuidance = document.getElementById("health-guidance");
+  const interventionTitle = document.getElementById("intervention-title");
+  const interventionGuidance = document.getElementById("intervention-guidance");
 
   const MEDIAPIPE_MODULE_URL = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.35/+esm";
   const MEDIAPIPE_WASM_URL = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.35/wasm";
@@ -35,6 +46,8 @@
   let poseLandmarker = null;
   let poseInitError = null;
   let originalSnapshot = null;
+  let lastMetrics = null;
+  let lastClassification = null;
 
   const yearElement = document.getElementById("year");
   if (yearElement) yearElement.textContent = new Date().getFullYear();
@@ -191,7 +204,11 @@ Thank you.`;
   const calculateTiltAngle = (left, right, width, height) => {
     const dx = (right.x - left.x) * width;
     const dy = (right.y - left.y) * height;
-    return Math.abs(Math.atan2(dy, dx) * 180 / Math.PI);
+    let angle = Math.abs(Math.atan2(dy, dx) * 180 / Math.PI);
+    // MediaPipe left/right landmark order can reverse on mirrored camera feeds.
+    // Convert 170–180° lines into their small deviation from horizontal.
+    if (angle > 90) angle = 180 - angle;
+    return Math.abs(angle);
   };
 
   const distance = (a, b, width, height) => {
@@ -285,6 +302,7 @@ Thank you.`;
     if (markedFlags >= 1 || moderateFlags >= 2) {
       return {
         type: "high",
+        level: "higher",
         icon: "↗",
         title: "Marked posture asymmetry detected",
         text: `AI detected a marked posture difference (shoulder ${shoulderAngle.toFixed(1)}°, hip ${hipAngle.toFixed(1)}°, shift ${torsoShift.toFixed(1)}%). Repeat the image with correct positioning. If the result remains, seek professional assessment. This is not a scoliosis diagnosis.`
@@ -294,6 +312,7 @@ Thank you.`;
     if (moderateFlags === 1) {
       return {
         type: "medium",
+        level: "watch",
         icon: "!",
         title: "Mild posture asymmetry observed",
         text: `One measurement shows a mild imbalance (shoulder ${shoulderAngle.toFixed(1)}°, hip ${hipAngle.toFixed(1)}°, shift ${torsoShift.toFixed(1)}%). Repeat the screening with the body upright and the camera level.`
@@ -302,13 +321,120 @@ Thank you.`;
 
     return {
       type: "low",
+      level: "low",
       icon: "✓",
       title: "Low posture asymmetry in this image",
       text: `Prototype measurements: shoulder ${shoulderAngle.toFixed(1)}°, hip ${hipAngle.toFixed(1)}°, shift ${torsoShift.toFixed(1)}%. This result evaluates posture in one image only and cannot rule out scoliosis.`
     };
   };
 
+  const hideCarePlan = () => {
+    if (carePlan) carePlan.hidden = true;
+  };
+
+  const buildExerciseSuggestions = (metrics, classification) => {
+    const suggestions = [];
+    const shoulderFlag = metrics?.shoulderAngle >= 3;
+    const hipFlag = metrics?.hipAngle >= 3;
+    const shiftFlag = metrics?.torsoShift >= 5;
+
+    suggestions.push({
+      title: "Wall posture reset",
+      detail: "Stand comfortably with your back near a wall, relax the shoulders and take 5 slow breaths. Repeat twice."
+    });
+
+    if (shoulderFlag) {
+      suggestions.push({
+        title: "Gentle shoulder-blade squeeze",
+        detail: "Sit or stand tall, gently draw the shoulder blades back and down, hold for 3 seconds, then relax. Repeat 8 times."
+      });
+    }
+
+    if (hipFlag) {
+      suggestions.push({
+        title: "Gentle hip-flexor mobility",
+        detail: "Use a comfortable half-kneeling position, keep the trunk upright and gently shift forward. Hold about 20 seconds per side, twice."
+      });
+    }
+
+    if (shiftFlag) {
+      suggestions.push({
+        title: "Bird-dog stability",
+        detail: "On hands and knees, slowly extend the opposite arm and leg while keeping the trunk steady. Try 6 controlled repetitions per side."
+      });
+    }
+
+    if (!shoulderFlag && !hipFlag && !shiftFlag) {
+      suggestions.push({
+        title: "Cat-cow mobility",
+        detail: "Move gently between rounded and extended spine positions for 6–8 comfortable repetitions."
+      });
+      suggestions.push({
+        title: "Movement break",
+        detail: "Avoid staying in one posture for long periods. Stand, walk or stretch briefly every 30–60 minutes."
+      });
+    }
+
+    if (classification?.type === "high") {
+      return suggestions.slice(0, 2);
+    }
+    return suggestions.slice(0, 3);
+  };
+
+  const renderCarePlan = (metrics, classification, manualCount = null) => {
+    if (!carePlan || !metrics || !classification) return;
+
+    carePlan.hidden = false;
+    carePlan.classList.remove("care-low", "care-medium", "care-high");
+    carePlan.classList.add(`care-${classification.type}`);
+
+    const levelLabel = classification.type === "high" ? "FOLLOW-UP ADVISED" : classification.type === "medium" ? "RECHECK" : "LOW ASYMMETRY";
+    if (careLevel) careLevel.textContent = levelLabel;
+
+    if (assessmentSummary) assessmentSummary.textContent = "Camera-based posture assessment completed";
+    if (assessmentDetail) {
+      assessmentDetail.textContent = `Shoulder tilt ${metrics.shoulderAngle.toFixed(1)}°, hip tilt ${metrics.hipAngle.toFixed(1)}°, torso shift ${metrics.torsoShift.toFixed(1)}%, landmark confidence ${Math.round(metrics.confidence * 100)}%.`;
+    }
+
+    if (screeningSummary) screeningSummary.textContent = classification.title;
+    if (screeningDetail) {
+      screeningDetail.textContent = manualCount === null
+        ? "This screening result is based on one image and visible posture asymmetry only."
+        : `AI result reviewed with ${manualCount} manual posture sign${manualCount === 1 ? "" : "s"} selected.`;
+    }
+
+    if (exerciseList) {
+      exerciseList.innerHTML = "";
+      buildExerciseSuggestions(metrics, classification).forEach((exercise, index) => {
+        const item = document.createElement("div");
+        item.className = "exercise-item";
+        item.innerHTML = `<span>${String(index + 1).padStart(2, "0")}</span><div><strong>${exercise.title}</strong><p>${exercise.detail}</p></div>`;
+        exerciseList.appendChild(item);
+      });
+    }
+
+    if (classification.type === "high") {
+      if (healthGuidanceTitle) healthGuidanceTitle.textContent = "Prioritise review over self-correction";
+      if (healthGuidance) healthGuidance.textContent = "Keep daily activity comfortable, avoid forcing the body into a 'straight' position, and use only gentle pain-free movement while waiting for professional advice.";
+      if (interventionTitle) interventionTitle.textContent = "Repeat once, then involve an adult and healthcare professional";
+      if (interventionGuidance) interventionGuidance.textContent = "Repeat the scan with the camera level and the full torso visible. If marked asymmetry remains, tell a parent, teacher or guardian and arrange assessment by a qualified healthcare professional.";
+    } else if (classification.type === "medium") {
+      if (healthGuidanceTitle) healthGuidanceTitle.textContent = "Build healthy posture habits";
+      if (healthGuidance) healthGuidance.textContent = "Use balanced carrying habits, change position regularly, keep screens near eye level and include comfortable whole-body activity in the day.";
+      if (interventionTitle) interventionTitle.textContent = "Recheck and monitor";
+      if (interventionGuidance) interventionGuidance.textContent = "Repeat the scan with good positioning. If the same asymmetry is seen repeatedly, or if you are concerned about posture, discuss it with a parent, teacher or healthcare professional.";
+    } else {
+      if (healthGuidanceTitle) healthGuidanceTitle.textContent = "Maintain healthy movement habits";
+      if (healthGuidance) healthGuidance.textContent = "Stay active, vary sitting and standing positions, use both backpack straps and take regular movement breaks during study or screen time.";
+      if (interventionTitle) interventionTitle.textContent = "Continue awareness and rescreen if needed";
+      if (interventionGuidance) interventionGuidance.textContent = "No marked asymmetry was detected in this image. Rescreen if visible posture changes appear or if a parent, teacher or healthcare professional has concerns.";
+    }
+  };
+
   const analyseSnapshot = async () => {
+    hideCarePlan();
+    lastMetrics = null;
+    lastClassification = null;
     setResult(null, "…", "AI is analysing the image", "The model is locating shoulder and hip landmarks.");
     captureButton.disabled = true;
 
@@ -360,7 +486,10 @@ Thank you.`;
       observationPanel.hidden = false;
 
       const classification = classifyPosture(metrics);
+      lastMetrics = metrics;
+      lastClassification = classification;
       setResult(classification.type, classification.icon, classification.title, classification.text);
+      renderCarePlan(metrics, classification);
       setModelStatus("AI analysis completed", "ready");
     } catch (error) {
       console.error("SCOLISCAN analysis error:", error);
@@ -394,6 +523,9 @@ Thank you.`;
       startButton.textContent = "Camera Active — Restart";
       observationPanel.hidden = true;
       if (aiMetrics) aiMetrics.hidden = true;
+      hideCarePlan();
+      lastMetrics = null;
+      lastClassification = null;
       startTimer();
       setResult("low", "●", "Camera activated", "Align the shoulders and hips with the guide lines before capturing an image.");
     } catch (error) {
@@ -424,6 +556,9 @@ Thank you.`;
     document.querySelectorAll('input[name="indicator"]').forEach((input) => { input.checked = false; });
     observationPanel.hidden = true;
     if (aiMetrics) aiMetrics.hidden = true;
+    hideCarePlan();
+    lastMetrics = null;
+    lastClassification = null;
     canvas.style.display = "none";
     originalSnapshot = null;
 
@@ -440,16 +575,25 @@ Thank you.`;
 
   reviewButton?.addEventListener("click", () => {
     const checked = document.querySelectorAll('input[name="indicator"]:checked').length;
+    let manualClassification;
 
     if (checked === 0) {
-      setResult("low", "✓", "No manual signs selected", "Continue monitoring posture. Seek professional advice if there are concerns or other symptoms.");
+      manualClassification = { type: "low", level: "low", icon: "✓", title: "No manual signs selected" };
+      setResult("low", "✓", manualClassification.title, "Continue monitoring posture. Seek professional advice if there are concerns or other symptoms.");
     } else if (checked === 1) {
-      setResult("medium", "!", "One manual sign observed", "Repeat the screening with correct positioning and speak with a teacher, parent or healthcare professional if the sign remains.");
+      manualClassification = { type: "medium", level: "watch", icon: "!", title: "One manual sign observed" };
+      setResult("medium", "!", manualClassification.title, "Repeat the screening with correct positioning and speak with a teacher, parent or healthcare professional if the sign remains.");
     } else {
-      setResult("high", "↗", "Further assessment is recommended", "Several posture signs were selected. Seek assessment from a doctor or healthcare professional. This is not a scoliosis diagnosis.");
+      manualClassification = { type: "high", level: "higher", icon: "↗", title: "Further assessment is recommended" };
+      setResult("high", "↗", manualClassification.title, "Several posture signs were selected. Seek assessment from a doctor or healthcare professional. This is not a scoliosis diagnosis.");
     }
 
-    resultCard?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    if (lastMetrics) {
+      lastClassification = manualClassification;
+      renderCarePlan(lastMetrics, manualClassification, checked);
+    }
+
+    carePlan?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   });
 
   document.querySelectorAll("details").forEach((detail) => {
