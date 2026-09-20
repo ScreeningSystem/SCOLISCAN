@@ -23,3 +23,8 @@ The website contact button opens Gmail Web addressed to `hazmanzafirah@gmail.com
 
 ## Medical notice
 SCOLISCAN is an educational screening prototype, not a medical device. It does not diagnose scoliosis and does not replace professional clinical assessment or radiographic examination.
+
+## v13 updates
+- Reset button text is now dark and clearly visible on mobile.
+- Added `SCOLISCAN_team.jpg` as a featured team proof image in the Form 4 Innovation Team section.
+- Updated stylesheet cache version to `v=13` so mobile browsers load the latest layout.

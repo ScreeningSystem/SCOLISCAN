@@ -930,3 +930,99 @@ details p { padding: 0 21px 21px; color: var(--muted); font-size: .88rem; }
   .result-card { grid-template-columns: 1fr; text-align: center; }
   .result-icon { margin-inline: auto; }
 }
+
+/* ===== v13: clearer Reset button + featured team proof photo ===== */
+#reset-photo,
+.camera-controls .btn-ghost {
+  color: #10223b !important;
+  background: #f5f8fc;
+  border-color: rgba(255,255,255,.18);
+  font-weight: 800;
+}
+#reset-photo:not(:disabled):hover,
+.camera-controls .btn-ghost:not(:disabled):hover {
+  color: #071a2f !important;
+  background: #ffffff;
+}
+#reset-photo:disabled,
+.camera-controls .btn-ghost:disabled {
+  color: rgba(16,34,59,.55) !important;
+}
+
+.team-photo-card {
+  margin: 30px 0 0;
+  border: 1px solid rgba(79,124,255,.13);
+  border-radius: 24px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 18px 45px rgba(45,92,158,.10);
+}
+.team-photo-wrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #eef4fb;
+}
+.team-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+.team-photo-badge {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: white;
+  background: rgba(9,32,56,.88);
+  border: 1px solid rgba(255,255,255,.22);
+  backdrop-filter: blur(10px);
+  font-size: .61rem;
+  font-weight: 800;
+  letter-spacing: .11em;
+}
+.team-photo-card figcaption {
+  display: grid;
+  gap: 5px;
+  padding: 18px 20px 20px;
+  text-align: left;
+}
+.team-photo-card figcaption strong {
+  color: var(--ink);
+  font: 800 1rem "Manrope", sans-serif;
+}
+.team-photo-card figcaption span {
+  color: var(--muted);
+  font-size: .78rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 640px) {
+  .team-photo-card {
+    width: 100%;
+    margin-top: 24px;
+    border-radius: 20px;
+  }
+  .team-photo-wrap {
+    aspect-ratio: 4 / 3;
+  }
+  .team-photo-badge {
+    left: 12px;
+    bottom: 12px;
+    padding: 7px 10px;
+    font-size: .54rem;
+    letter-spacing: .08em;
+  }
+  .team-photo-card figcaption {
+    padding: 15px 14px 17px;
+    text-align: center;
+  }
+  .team-photo-card figcaption strong {
+    font-size: .92rem;
+  }
+  .team-photo-card figcaption span {
+    font-size: .74rem;
+  }
+}
