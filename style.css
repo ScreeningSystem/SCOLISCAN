@@ -646,3 +646,287 @@ details p { padding: 0 21px 21px; color: var(--muted); font-size: .88rem; }
 
   .footer-brand { justify-content: center; }
 }
+
+
+/* ===== MOBILE WIDTH / CENTERING HOTFIX v12 ===== */
+/* Prevent CSS Grid min-content sizing from making the Live AI section wider than the phone. */
+.hero-grid,
+.demo-grid,
+.comparison-grid,
+.faq-grid,
+.contact-card,
+.demo-grid > *,
+.demo-panel,
+.demo-copy,
+.camera-shell,
+.camera-controls,
+.ai-status,
+.ai-metrics,
+.observation-panel,
+.result-card,
+.scan-summary {
+  min-width: 0;
+}
+
+.demo-panel,
+.camera-shell,
+.camera-controls,
+.ai-status,
+.ai-metrics,
+.observation-panel,
+.result-card,
+.scan-summary {
+  width: 100%;
+  max-width: 100%;
+}
+
+.demo-copy h2,
+.demo-copy p,
+.demo-note,
+.demo-tips,
+.demo-panel,
+.result-card,
+.observation-panel,
+.scan-summary {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+  .hero-grid,
+  .demo-grid,
+  .comparison-grid,
+  .faq-grid,
+  .contact-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .demo-grid {
+    width: 100%;
+    max-width: 100%;
+    gap: 42px;
+  }
+
+  .demo-copy,
+  .demo-panel {
+    width: 100%;
+    max-width: 680px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  html,
+  body,
+  main,
+  .section,
+  .demo-section {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  /* Margin-based container is safer than percentage width in iOS/in-app browsers. */
+  .container {
+    width: auto;
+    max-width: none;
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+
+  .demo-section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .demo-grid {
+    display: block;
+    width: auto;
+    max-width: none;
+  }
+
+  .demo-copy,
+  .demo-panel {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .demo-copy {
+    padding-inline: 2px;
+  }
+
+  .demo-copy .section-kicker {
+    display: block;
+    text-align: center;
+  }
+
+  .demo-copy h2 {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: clamp(2.05rem, 10.5vw, 3rem);
+    line-height: 1.08;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  .demo-copy > p {
+    width: 100%;
+    max-width: 34rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: .94rem;
+  }
+
+  .demo-note,
+  .demo-tips {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .demo-panel {
+    box-sizing: border-box;
+    margin-top: 38px;
+    padding: 12px;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  .demo-panel-head {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .demo-panel-head > div,
+  .demo-panel-head > div > div {
+    min-width: 0;
+  }
+
+  .demo-panel-head strong,
+  .demo-panel-head small {
+    overflow-wrap: anywhere;
+  }
+
+  .camera-shell {
+    aspect-ratio: 4 / 5;
+    min-height: 0;
+    height: auto;
+    max-height: 520px;
+    border-radius: 18px;
+  }
+
+  .camera-meta {
+    left: 10px;
+    right: 10px;
+    gap: 8px;
+    font-size: .43rem;
+    letter-spacing: .06em;
+  }
+
+  .camera-meta span {
+    min-width: 0;
+    max-width: 48%;
+    overflow-wrap: anywhere;
+  }
+
+  .shoulder-guide,
+  .waist-guide {
+    left: 12%;
+    right: 12%;
+  }
+
+  .shoulder-guide i,
+  .waist-guide i {
+    right: 2px;
+    max-width: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .camera-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    gap: 10px;
+  }
+
+  .camera-controls .btn {
+    width: 100%;
+    min-width: 0;
+    min-height: 54px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .ai-status {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .ai-metrics {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    width: 100%;
+    max-width: 100%;
+    gap: 10px;
+  }
+
+  .ai-metrics > div {
+    min-width: 0;
+    width: 100%;
+    padding: 13px 11px;
+  }
+
+  .ai-metrics span,
+  .ai-metrics strong {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .result-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 14px;
+    padding: 15px;
+  }
+
+  .result-card > div,
+  .result-card h3,
+  .result-card p {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .observation-item {
+    min-width: 0;
+  }
+
+  .summary-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-brand-lockup {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 390px) {
+  .container {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .demo-panel { padding: 10px; }
+  .ai-metrics { grid-template-columns: minmax(0, 1fr); }
+  .result-card { grid-template-columns: 1fr; text-align: center; }
+  .result-icon { margin-inline: auto; }
+}
